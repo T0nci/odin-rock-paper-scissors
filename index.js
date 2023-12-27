@@ -19,7 +19,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     // Make the users choice easy to compare
-    playerSelection = playerSelection.toLowerCase()
+    playerSelection = playerSelection.toLowerCase();
     playerSelection = playerSelection.trim();
 
     // Return true if player wins, otherwise false(computer win, or player not choosing any option)
@@ -34,15 +34,16 @@ function playRound(playerSelection, computerSelection) {
                     console.log("You lose! Paper beats Rock");
                     return false;
                 case "scissors":
-                    console.log("You win! Rock beats Scissors")
+                    console.log("You win! Rock beats Scissors");
                     return true;
                 default:
                     return;
             }
+
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    console.log("You win! Paper beats Rock")
+                    console.log("You win! Paper beats Rock");
                     return true;
                 case "paper":
                     playerSelection = prompt("Draw! Paper and Paper. Type in your choice again: Rock | Paper | Scissors");
@@ -54,6 +55,7 @@ function playRound(playerSelection, computerSelection) {
                 default:
                     return;
             }
+
         case "scissors":
             switch (computerSelection) {
                 case "rock":
@@ -69,6 +71,7 @@ function playRound(playerSelection, computerSelection) {
                 default:
                     return;
             }
+            
         default:
             return;
     }
@@ -97,10 +100,10 @@ function game() {
     }
 
     if (playerPoints > computerPoints) {
-        console.log("Game over. You win!")
+        console.log("Game over. You win!");
     }
     else {
-        console.log("Game over. You lose!")
+        console.log("Game over. You lose!");
     }
 }
 
