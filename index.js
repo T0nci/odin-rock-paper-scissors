@@ -3,7 +3,7 @@ function getComputerChoice() {
     choice = Math.floor(Math.random() * 3);
 
     // After a bit of thinking, when employing a strategy,
-    // the most favoured(statistically most shown) is the 0 (0 - 0.3(3)) then the 2 (0.6(6) - 0.34 = 0.32(6)) then the 1 (0.9(9) - 0.67 = 0.32(9))
+    // the most favoured(statistically most shown) is the 0 (0 - 0.3(3)) then the 2 (0.9(9) - 0.67 = 0.32(9)) then the 1 (0.6(6) - 0.34 = 0.32(6))
     switch (choice) {
         case 0:
             return "rock";
@@ -18,10 +18,11 @@ function getComputerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
-    // Make the users choice error free
+    // Make the users choice easy to compare
     playerSelection = playerSelection.toLowerCase()
     playerSelection = playerSelection.trim();
 
+    // Return true if player wins, otherwise false(computer win, or player not choosing any option)
     switch (playerSelection) {
         case "rock":
             switch (computerSelection) {
@@ -59,7 +60,7 @@ function playRound(playerSelection, computerSelection) {
                     console.log("You lose! Rock beats Scissors");
                     return false;
                 case "paper":
-                    console.log("You win! Scissors beats Paper!");
+                    console.log("You win! Scissors beats Paper");
                     return true;
                 case "scissors":
                     playerSelection = prompt("Draw! Scissors and Scissors. Type in your choice again: Rock | Paper | Scissors");
