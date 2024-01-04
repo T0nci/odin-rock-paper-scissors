@@ -3,8 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Odin Rock Paper Scissors</title>
+
+    <script src="./index.js" defer></script>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Roboto Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script src="./index.js"></script>
+    <div class="main-container">
+        <h1 class="main-header">Rock, Paper, Scissors <span>Shoot!</span></h1>
+
+        <div class="game">
+            <div class="player-options">
+                <button id="rock"><img src="./images/rock-paper-scissors-296854_1280.png" alt="rock"></button>
+                <button id="paper"><img src="./images/rock-paper-scissors-296855_1280.png" alt="paper"></button>
+                <button id="scissors"><img src="./images/rock-paper-scissors-296853_1280.png" alt="scissors"></button>
+            </div>
+            <div class="game-information">
+                <div class="round-result">Draw! You win/lose! X beats Y / Z and Z</div>
+                <div class="game-result">0 - 0</div>
+            </div>
+            <div class="computer-options">
+                <button><img src="./images/rock-paper-scissors-296854_1280.png" alt="rock"></button>
+                <button><img src="./images/rock-paper-scissors-296855_1280.png" alt="paper"></button>
+                <button><img src="./images/rock-paper-scissors-296853_1280.png" alt="scissors"></button>
+            </div>
+        </div>
+
+        <div class="footer">
+            Credit to <a href="https://pixabay.com/users/clker-free-vector-images-3736/">Clker-Free-Vector-Images</a> for the images!
+        </div>
+    </div>
 </body>
 </html>
