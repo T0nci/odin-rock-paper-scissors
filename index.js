@@ -29,88 +29,107 @@ function playRound(playerSelection, computerSelection) {
         case "rock":
             switch (computerSelection) {
                 case "rock":
-                    playerSelection = prompt(`Draw! Rock and Rock. 
-                        Type in your choice again: Rock | Paper | Scissors`);
-                    computerSelection = getComputerChoice();
-                    return playRound(playerSelection, computerSelection);
+                    return ["Draw! Rock and Rock!", null]
                 case "paper":
-                    console.log("You lose! Paper beats Rock");
-                    return false;
+                    return ["You lose! Paper beats Rock", false];
                 case "scissors":
-                    console.log("You win! Rock beats Scissors");
-                    return true;
+                    return ["You win! Rock beats Scissors", true];
                 default:
-                    return;
+                    return ["ERROR"];
             }
 
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    console.log("You win! Paper beats Rock");
-                    return true;
+                    return ["You win! Paper beats Rock", true];
                 case "paper":
-                    playerSelection = prompt(`Draw! Paper and Paper. 
-                        Type in your choice again: Rock | Paper | Scissors`);
-                    computerSelection = getComputerChoice();
-                    return playRound(playerSelection, computerSelection);
+                    return ["Draw! Paper and Paper", null];
                 case "scissors":
-                    console.log("You lose! Scissors beats Paper");
-                    return false;
+                    return ["You lose! Scissors beats Paper", false];
                 default:
-                    return;
+                    return ["ERROR"];
             }
 
         case "scissors":
             switch (computerSelection) {
                 case "rock":
-                    console.log("You lose! Rock beats Scissors");
-                    return false;
+                    return ["You lose! Rock beats Scissors", false];
                 case "paper":
-                    console.log("You win! Scissors beats Paper");
-                    return true;
+                    return ["You win! Scissors beats Paper", true];
                 case "scissors":
-                    playerSelection = prompt(`Draw! Scissors and Scissors. 
-                        Type in your choice again: Rock | Paper | Scissors`);
-                    computerSelection = getComputerChoice();
-                    return playRound(playerSelection, computerSelection);
+                    return ["Draw! Scissors and Scissors"];
                 default:
-                    return;
+                    return ["ERROR"];
             }
             
         default:
-            return;
+            return ["ERROR"];
     }
 }
 
 
-function game() {
-    let playerChoice;
-    let computerChoice;
-    let playerPoints = 0;
-    let computerPoints = 0;
+function playGame(event) {
+    button = event.target;
+    computerChoice = getComputerChoice();
+    
+    results = playRound(button.getAttribute('id'), computerChoice);
 
-    for (let i = 0; i < 5; i++) {
-        playerChoice = prompt("Type in your choice: Rock | Paper | Scissors");
-        computerChoice = getComputerChoice();
-        console.log(`Computer choice: ${computerChoice}`);
+    // Show computer choice
+    switch(computerChoice) {
+        case "rock":
+            computerButton.setAttribute(
+                "src", "./images/rock-paper-scissors-296854_1280.png"
+            );
+            break;
+        case "paper":
+            computerButton.setAttribute(
+                "src", "./images/rock-paper-scissors-296855_1280.png"
+            );
+            break;
+        case "scissors":
+            computerButton.setAttribute(
+                "src", "./images/rock-paper-scissors-296853_1280.png"
+            );
+            break;
+    }
+    // End
 
-        winner = playRound(playerChoice, computerChoice);
-
-        if (winner === true) {
-            playerPoints++;
-        }
-        else {
-            computerPoints++;
-        }
+    roundResult.textContent = results[0];
+    if (results[1] === true) {
+        playerPoints++;
+    } else if (results[1] === false) {
+        computerPoints++;
     }
 
-    if (playerPoints > computerPoints) {
-        console.log("Game over. You win!");
-    }
-    else {
-        console.log("Game over. You lose!");
+    if (playerPoints !== 5 && computerPoints !== 5) {
+        gameResult.textContent = `${playerPoints} - ${computerPoints}`;
+    } else if (playerPoints === 5) {
+        gameResult.innerHTML = `${playerPoints} - ${computerPoints}<br>
+        Game over. You win!`;
+        btnRock.removeEventListener("click", playGame);
+        btnPaper.removeEventListener("click", playGame);
+        btnScissors.removeEventListener("click", playGame);
+    } else {
+        gameResult.innerHTML = `${playerPoints} - ${computerPoints}<br>
+        Game over. You lose!`;
+        btnRock.removeEventListener("click", playGame);
+        btnPaper.removeEventListener("click", playGame);
+        btnScissors.removeEventListener("click", playGame);
     }
 }
 
+let playerPoints = 0;
+let computerPoints = 0;
 
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissors = document.querySelector("#scissors");
 
+const roundResult = document.querySelector(".game-information > .round-result");
+const gameResult = document.querySelector(".game-information > .game-result");
+
+const computerButton = document.querySelector("#computer-choice");
+
+btnRock.addEventListener("click", playGame);
+btnPaper.addEventListener("click", playGame);
+btnScissors.addEventListener("click", playGame);

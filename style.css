@@ -41,24 +41,21 @@ body {
 .game {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin-bottom: 64px;
 }
 
-.player-options, .computer-options {
+.player-options {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
-.player-options > button, .computer-options > button {
-    height: auto;
-    border: 5px solid #f1c40f;
-}
-
-button > img {
-    max-width: 200px;
-    max-height: 200px;
+div.player-options > img {
+    max-width: 205px;
+    max-height: 205px;
+    border: 5px solid cyan;
 }
 
 .game-information {
@@ -67,4 +64,10 @@ button > img {
     flex-direction: column;
     padding: 16px;
     gap: 300px;
+}
+
+img {
+    max-width: 205px;
+    max-height: 205px;
+    border: 5px solid firebrick;
 }
