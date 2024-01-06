@@ -69,11 +69,11 @@ function playRound(playerSelection, computerSelection) {
 
 
 function playGame(event) {
-    button = event.target;
+    button = event.currentTarget;
     computerChoice = getComputerChoice();
-    
-    results = playRound(button.getAttribute('id'), computerChoice);
 
+    results = playRound(button.getAttribute('id'), computerChoice);
+    
     // Show computer choice
     switch(computerChoice) {
         case "rock":
@@ -128,7 +128,7 @@ const btnScissors = document.querySelector("#scissors");
 const roundResult = document.querySelector(".game-information > .round-result");
 const gameResult = document.querySelector(".game-information > .game-result");
 
-const computerButton = document.querySelector("#computer-choice");
+const computerButton = document.querySelector(".computer-choice");
 
 btnRock.addEventListener("click", playGame);
 btnPaper.addEventListener("click", playGame);
